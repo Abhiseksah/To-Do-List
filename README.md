@@ -1,3 +1,3 @@
 # To-Do-List
-## [![heroku](todoabhi.herokuapp.com)
+## [](todoabhi.herokuapp.com)
 This is normal to-do-list made from python using Django framework
