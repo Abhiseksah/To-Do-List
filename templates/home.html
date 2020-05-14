@@ -1,0 +1,219 @@
+
+
+{% load static%}
+
+
+
+
+     <!DOCTYPE html>
+<html>
+<head>
+    <title>To Do List</title>
+<style>
+    div.a{
+        text-align: center;
+    }
+    
+
+
+    .b {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 2px 4px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 0px 0px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+      }
+      .bb {
+        display: inline-block;
+        border-radius: 4px;
+        background-color: #372cd6;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 28px;
+        padding: 20px;
+        width: 250px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+        
+      }
+      .bbb {
+        display: inline-block;
+        border-radius: 4px;
+        background-color: #f1f0f5;
+        border: none;
+        color: rgb(3, 3, 3);
+        text-align: center;
+        font-size: 28px;
+        padding: 20px;
+        width: 210px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+        
+      }
+      .bname {
+        display: inline-block;
+        border-radius: 4px;
+        background-color: #f56b34;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 28px;
+        padding: 20px;
+        width: 350px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+        
+      }
+      .b44 {
+        display: inline-block;
+        border-radius: 4px;
+        background-color: #838686;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 28px;
+        padding: 21px;
+        width: 735px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+        }
+
+      .b1 {
+        background-color: white; 
+        color: black; 
+        border: 2px solid rgb(117, 19, 126);
+      }
+      
+      .b1:hover {
+        background-color: rgb(229, 151, 240);
+        color: white;
+      }
+      .b3 {
+        background-color: white; 
+        color: black; 
+        border: 2px solid #f44336;
+      }
+      
+      .b3:hover {
+        background-color: #dd756d;
+        color: white;
+      }
+      .b2 {
+        background-color: white; 
+        color: black; 
+        border: 2px solid rgb(37, 186, 0);
+      }
+      
+      .b2:hover {
+        background-color: rgb(161, 236, 142);
+        color: white;
+      }
+      .b4 {
+        background-color: white;
+        color: black;
+        border: 2px solid #e7e7e7;
+      }
+      
+      .b4:hover {background-color: #db0f0f;}
+      
+
+
+
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #372cd6;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 210px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -30px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+</style>
+</head>
+<body bgcolor="cyan">
+
+<form action="logout">
+    <button type="submit" class="button" style="vertical-align: middle;"><span>Logout</span></button>
+    
+    <tr><button type="button" class="bname" > Hello {{name}}</button>
+
+      <button class="b44" type="button">To Do List by Abhisek Sah</button>  
+    <hr color="black">
+   
+</form>
+          
+        {%for i in infodata%} 
+            {% if i.account_id is acc%}
+                {%if i.itemMark is True%}
+                <strike><h3>{{i.information}}</strike>
+                <tr><button class="b b1" type="submit" ><a href="/mark/{{i.id}}">Unmark</a></button></tr>
+                <tr><button class="b b2"type="submit" ><a href="/dynamic/{{i.id}}">Edit</a></button></tr>
+                <tr><button class="b b3" type="submit"><a href="/delete/{{i.id}}">Delete</a></button></tr>     </h3>  
+                {% else %}
+               <p class="solid"> <h3>{{i.information}}
+                <tr><button class="b b1" type="submit" ><a href="/mark/{{i.id}}">Mark</a></button></tr>
+                <tr><button class="b b2" type="submit" ><a href="/dynamic/{{i.id}}">Edit</a></button></tr>
+                <tr><button class="b b3" type="submit"><a href="/delete/{{i.id}}">Delete</a></button></tr>       </h3>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+            
+
+        <form action="start" method="post"> 
+            {% csrf_token%}
+            <input class="bbb" type="text" name="blank1" >
+            <button class="bb" type="submit" >Add</button>
+       </form>
+
+
+
+       
+    
+
+
+</body>
+</html>
+       
+
+       
